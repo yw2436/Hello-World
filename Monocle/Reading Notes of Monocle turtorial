@@ -1,0 +1,18 @@
+The turtorial is here: http://cole-trapnell-lab.github.io/monocle-release/docs/#installing-monocle
+
+Workflow:
+  Stpre Data in a CellDataSet(Monocle's main class)
+  Classify cells with known marker genes(using knowledge of expression of certain genes, e.g. expression(MYF5) >=1 & expression(ANPEP) < 1)
+  Cluster your cells
+  Order cells in pseudotime along a trajectory
+  Perform differential expression analysis(Can do lots of things by providing a comparing formula, e.g. "~Batch" to control batch effect and "~Media" to explore the effect of media)
+  
+The CellDataSet class(sometimes called CDS)
+  Require three input files: (two main element: gene and cell. Numbers of genes and cells must be the same in each input)
+    exprs(numeric matrix of expression values, rows are genes, columns are cells);
+    phenoData(an AnnotatedDataFrame object, rows are cells, columns are cell attributes such as cell type, culture condition, etc.);
+    featureData(AnnotatedDataFrame, rows are features such as genes, columns are gene attributes, such as biotyoe, gc content, etc. Must has a column called 'gene_short_name')
+    # CDS can be imported from and exported to other packages like Seurat and Scran 
+    
+Choosing a distribution for your data
+  
