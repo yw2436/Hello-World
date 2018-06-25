@@ -9,10 +9,10 @@ Workflow:
   
 The CellDataSet class(sometimes called CDS)
   Require three input files: (two main element: gene and cell. Numbers of genes and cells must be the same in each input)
-    exprs(numeric matrix of expression values, rows are genes, columns are cells);
+    exprs(numeric matrix or sparse matrix of expression values, rows are genes, columns are cells);
     phenoData(an AnnotatedDataFrame object, rows are cells, columns are cell attributes such as cell type, culture condition, etc.);
     featureData(AnnotatedDataFrame, rows are features such as genes, columns are gene attributes, such as biotyoe, gc content, etc. Must has a column called 'gene_short_name')
     # CDS can be imported from and exported to other packages like Seurat and Scran 
     
 Choosing a distribution for your data
-  
+  When creating CDS, we can set two parameters, expressionFamily and lowerDetectionLimit. expressionFamily represents the distribution of the expression data. Normally, there are two kinds of expression data, 1, UMI, transcript counts with spike-ins or relative2abs(), raw read counts; corresponding to negative binomial distribution, and negbinomial.size() or negbinomial() options; 2, FPKM or TPM, corresponding to tobit()[truncated normal, causing Monocle to log-transform your data] or gaussianff()[only if you have transformed your data, some features may not work well] 
