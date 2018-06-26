@@ -1,0 +1,9 @@
+Object: get the average of every 5 elements in a vector
+
+Solution:
+  convert to a 5-column matrix, and using apply() to get the mean of each row.
+  
+R:
+  test <- seq(1:1000)
+  tmp <- matrix(test, nrow = 5, byrow = True)
+  avg <- apply(tmp, 1, mean)
