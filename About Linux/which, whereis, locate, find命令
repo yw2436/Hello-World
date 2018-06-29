@@ -1,0 +1,8 @@
+四个命令都是查找命令，功能有所不同
+
+which是用来查找PATH中的可执行文件，比如
+  ~$ which ls
+  /usr/bin/ls
+  ~$ which methylpy 
+  /usr/bin/methylpy
+  
