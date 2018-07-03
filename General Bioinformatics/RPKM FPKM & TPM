@@ -1,0 +1,15 @@
+RPKM，FPKM和TPM是三种衡量基因表达量的指标
+
+RPKM(Reads per Kilobase Millon): #total exon reads aligned to a gene/#total mapped reads in millons/exon length in KB
+  每一千个碱基，一百万个reads中有多少map到了这个基因上
+FPKM(Fragments per Kilobase per Millon): #total exon fragments aligned to a gene/#total mapped fragments in millons/exon length in KB
+  每一千个碱基，一百万个fragments中有多少map到了这个基因上，主要针对pair-end。对于单端数据等同于RPKM，因为一个read当做一个fragment。对于双端数据，一对pair-end的reads称为一个fragment，如果一对reads中有一个没有比对上，或者filter掉了，那剩下的那个read也算一个fragment。
+TPM(Transcripts per Kilobase Millon): 
+  TPMi={( Ni/Li )*1000000 } / sum( Ni/Li+……..+ Nm/Lm )
+  Ni：mapping到基因i上的read数；
+  Li：基因i的外显子长度的总和。
+  先对于每一个基因的counts用基因长度进行标准化，再用这个标准化过的数，对比所有基因的这个数，再进行一次标准化。
+  
+但是对于三种算法来说，都需要一个ReadCount矩阵来记录每个基因的counts，基因为行，样本为列。这个矩阵是由alignment(bam/sam)和annotation(GTF/GFF3)得出。
+
+还有一种矫正方法，基于大多数中等表达量的基因在样品间不存在表达差异的假设，使用TMM(trimmed mean of M values)或者类似的方法计算一个校正系数，再用这个系数直接生成标准化的counts数值。不同的软件中的计算方法有差别，主要的软件有edgeR, DESeq等。
