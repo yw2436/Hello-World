@@ -1,1 +1,15 @@
-There are three main sources of human reference genome data: NCBI, Ensembl and UCSC. All resources use the same assembly but annotates differently.
+There are three main sources of human reference genome data: NCBI, Ensembl and UCSC. 
+All resources use the same assembly but annotates differently. But during downloading, we must be caution about which assembly they are using. 
+
+Normally, we are interested in reference sequence(.fasta) and annotation(.gtf)
+###Better download the .fasta and .gtf from the same database, because they may use different name of chromosomes like 1 or chr1, chrUn_KN150713v1 or KN150712.1
+
+.fasta  
+  Soft-masked(_sm) or RepeatMasker(_rm)
+    RepeatMasker masks repeat region with Ns, while Soft-masked repeat region is lower case.
+  toplevel or primary_assembly
+    toplevel文件中包含了所有的在ensembl数据库schema中被定义为toplevel的序列，包括:染色体, 未能组装到染色体上的区域, 含有N的haplotype/patch区域。
+    primary_assembly文件相比于toplevel文件，减去了含有N的haplotype/patch区域。这类文件比较适合用来比对。
+    
+.gtf
+  
