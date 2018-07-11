@@ -1,0 +1,15 @@
+sed命令是一个根据给定‘脚本’对文件中字符进行操作的命令，使用格式如下：
+  sed [OPTION]... {script-only-if-no-other-script} [input-file]...
+  选项有：-e, -f(--file), -n
+    -e 表示在一行中执行多个sed命令，-n选项由表示略过输出
+    -f 表示给定一个脚本文件来完成命令
+    
+  脚本命令：
+    d 代表删除 
+          sed "1,3d" filename      删除1-3行
+          sed "2,$d" filename      删除2-最后一行
+          sed "/Tom/!d" filename   ！表示否定，删除不包含‘Tom’的行
+    s 代表置换 
+          sed "s/west/north/g" filename  s命令代表置换，g表示对行做全局的置换，也就是说，如果west在一行内出现多处，所有的呈现都会被置换成north。若没有 g 命令，只会置换每行中第一次出出的west 
+    p 代表显示
+          sed -n "/[Jj]ohnson/p" filename 只有与Johnson或johnson相符的行才会显示出来,如果不加-n，则符合的行会重复显示
