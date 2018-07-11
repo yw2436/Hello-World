@@ -1,0 +1,3 @@
+When we are downloading gtf files, there are often two similiar files. One is xx.chr.gtf and the other is just xx.gtf.
+The difference is that:
+  The one without 'chr' contains annotations for genes on unplaced or unlocalized contigs, while the one with 'chr' only contains annotation for assembled chromosomes
